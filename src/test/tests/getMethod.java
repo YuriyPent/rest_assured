@@ -1,4 +1,4 @@
-package instrument.ed;
+package tests;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class basics {
+public class getMethod {
 
     @Test
     public void TestAssured() {
@@ -16,7 +16,7 @@ public class basics {
                 .param("radius", "500")
                 .param("types", "food")
                 .param("name", "harbour")
-                .param("key", "AIzaSyDW6QVDCAdrRXHivlxKWpTNHV1LfPsVpCQ")
+                .param("key", "API_KEY")
 //                .header("", "")
 //                .cookie("", "")
 //                .body("")

@@ -1,4 +1,4 @@
-package instrument.ed;
+package tests;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class basic2 {
+public class postMethod {
 
     @Test
     public void postData() {

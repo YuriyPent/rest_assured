@@ -1,4 +1,4 @@
-package instrument.ed;
+package tests;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -11,26 +11,24 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import static files.payLoad.getPostData;
-import static files.resources.placePostData;
+import static data.payLoad.getPostData;
+import static data.resources.placePostData;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class basic3 {
+public class postAndDeleteMethod {
     private Properties properties = new Properties();
 
     @BeforeTest
     public void getData() throws IOException {
 
         FileInputStream fileInputStream = new FileInputStream(
-                System.getProperty("user.dir") + "/src/sed/files/env.properties");
+                System.getProperty("user.dir") + "/src/test/resources/env.properties");
         properties.load(fileInputStream);
     }
 
     @Test
     public void AddAndDeletePlace() {
-
-
 
 //        Add place
         RestAssured.baseURI = properties.getProperty("HOST");

@@ -1,8 +1,8 @@
 package data;
 
-public class payLoad {
+public class PostDataJson {
 
-    public static String getPostData(){
+    public static String getPostData() {
 
         return "{\n" +
                 "    \"location\":{\n" +

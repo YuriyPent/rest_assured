@@ -1,7 +1,9 @@
 package tests;
 
+import data.ReusableMethods;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.path.xml.XmlPath;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
@@ -9,9 +11,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static data.Path.placePostDataXml;
 import static io.restassured.RestAssured.given;
 
-public class postMethodXML {
+public class PostMethodXML {
+
+    @SuppressWarnings("Since15")
+    private static String GenerateStringFromResource(String path) throws IOException {
+        return new String(Files.readAllBytes(Paths.get(path)));
+    }
 
     @Test
     public void postData() throws IOException {
@@ -22,17 +30,14 @@ public class postMethodXML {
                 .queryParam("key", "qaclick123")
                 .body(postData)
                 .when()
-                .post("maps/api/place/add/xml")
+                .post(placePostDataXml())
                 .then()
                 .assertThat()
                 .statusCode(200)
                 .and()
                 .contentType(ContentType.XML).extract().response();
-        System.out.println(response.asString());
-    }
 
-    @SuppressWarnings("Since15")
-    private static String GenerateStringFromResource(String path) throws IOException {
-        return new String(Files.readAllBytes(Paths.get(path)));
+        XmlPath xmlPath = ReusableMethods.rawToXML(response);
+        System.out.println("PLACE_ID: \n" + xmlPath.get("PlaceAddResponse.place_id"));
     }
 }

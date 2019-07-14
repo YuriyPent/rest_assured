@@ -11,12 +11,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import static data.payLoad.getPostData;
-import static data.resources.placePostData;
+import static data.Path.placePostDataJson;
+import static data.PostDataJson.getPostData;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class postAndDeleteMethod {
+public class PostAndDeleteMethod {
     private Properties properties = new Properties();
 
     @BeforeTest
@@ -36,7 +36,7 @@ public class postAndDeleteMethod {
                 .queryParam("key", properties.getProperty("KEY"))
                 .body(getPostData())
                 .when()
-                .post(placePostData())
+                .post(placePostDataJson())
                 .then()
                 .assertThat()
                 .statusCode(200)

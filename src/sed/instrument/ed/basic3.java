@@ -27,6 +27,8 @@ public class basic3 {
                 "    \"website\" : \"http://google.com\",\n" +
                 "    \"language\" : \"French-IN\"\n" +
                 "}\n";
+
+//        Grab the response
         RestAssured.baseURI = "http://216.10.245.166";
         Response response = given()
                 .queryParam("key", "qaclick123")
@@ -41,10 +43,26 @@ public class basic3 {
                 .and()
                 .body("status", equalTo("OK"))
                 .extract().response();
+
+//        Grab the place_id from response
         String responseString = response.asString();
         System.out.println("RESPONSE: \n" + responseString);
         JsonPath jsonPath = new JsonPath(responseString);
         String placeId = jsonPath.get("place_id");
         System.out.println("PLACE_ID: \n" + placeId);
+
+//        Place this place_id in the Delete request
+        given()
+                .queryParam("key", "qaclick123")
+                .body("{\"place_id\": \"" + placeId + "\"}")
+                .when()
+                .post("maps/api/place/delete/json")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .and()
+                .contentType(ContentType.JSON)
+                .and()
+                .body("status", equalTo("OK"));
     }
 }

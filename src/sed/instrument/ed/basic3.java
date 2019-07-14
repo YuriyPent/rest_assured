@@ -4,12 +4,26 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class basic3 {
+    private Properties properties = new Properties();
+
+    @BeforeTest
+    public void getData() throws IOException {
+
+        FileInputStream fileInputStream = new FileInputStream(
+                System.getProperty("user.dir") + "/src/sed/files/env.properties");
+        properties.load(fileInputStream);
+    }
 
     @Test
     public void AddAndDeletePlace() {
@@ -28,8 +42,8 @@ public class basic3 {
                 "    \"language\" : \"French-IN\"\n" +
                 "}\n";
 
-//        Grab the response
-        RestAssured.baseURI = "http://216.10.245.166";
+//        Add place
+        RestAssured.baseURI = properties.getProperty("HOST");
         Response response = given()
                 .queryParam("key", "qaclick123")
                 .body(body)
@@ -43,6 +57,7 @@ public class basic3 {
                 .and()
                 .body("status", equalTo("OK"))
                 .extract().response();
+        System.out.println("ADD PLACE SUCCESS");
 
 //        Grab the place_id from response
         String responseString = response.asString();
@@ -64,5 +79,6 @@ public class basic3 {
                 .contentType(ContentType.JSON)
                 .and()
                 .body("status", equalTo("OK"));
+        System.out.println("DELETE PLACE SUCCESS");
     }
 }

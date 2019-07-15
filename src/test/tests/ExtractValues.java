@@ -19,7 +19,7 @@ public class ExtractValues {
                 .param("radius", "500")
                 .param("types", "food")
                 .param("name", "harbour")
-                .param("key", "AIzaSyDW6QVDCAdrRXHivlxKWpTNHV1LfPsVpCQ")
+                .param("key", "API-KEY").log().all()
 //                .header("", "")
 //                .cookie("", "")
 //                .body("")
@@ -33,15 +33,13 @@ public class ExtractValues {
                 .and().statusLine("HTTP/1.1 200 OK")
                 .and()
                 .header("Server", "scaffolding on HTTPServer2").extract().response();
+
         JsonPath jsonPath = ReusableMethods.rawToJSON(response);
         int count = jsonPath.get("results.size()");
-        for (int i = 0; i < count; i++) {
 
+        for (int i = 0; i < count; i++) {
+            System.out.println(jsonPath.get("results[" + i + "].name"));
         }
         System.out.println(count);
-//                .and()
-//                .body("results[0].place_id", equalTo("ChIJK4NnVUCuEmsRFyTLcJ7ZvBU"))
-//                .and()
-//                .body("results[0].name", equalTo("Harbour Bar & Kitchen"));
     }
 }

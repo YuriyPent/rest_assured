@@ -8,20 +8,18 @@ import io.restassured.response.Response;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 import static data.PostDataJson.AddBook;
 import static io.restassured.RestAssured.given;
 
 public class DynamicJson {
 
     @Test(dataProvider = "BooksData")
-    public void addBook() throws IOException {
+    public void addBook(String isbn, String aisle){
 
         RestAssured.baseURI = "http://216.10.245.166";
         Response response = given()
                 .header("Content-Type", "application/json")
-                .body(AddBook("forg", "097"))
+                .body(AddBook(isbn, aisle))
                 .when()
                 .post("/Library/Addbook.php")
                 .then()

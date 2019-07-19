@@ -1,27 +1,32 @@
 package tests;
 
 import data.ReusableMethods;
+import data.TestBase;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static data.PostDataJson.AddBook;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import static io.restassured.RestAssured.given;
 
-public class DynamicJson {
+public class StaticJson extends TestBase{
 
-    @Test(dataProvider = "BooksData")
-    public void addBook(String isbn, String aisle){
+    @Test
+    public void addBook() throws IOException {
 
-        RestAssured.baseURI = "http://216.10.245.166";
+        RestAssured.baseURI = properties.getProperty("HOST");
         Response response = given()
                 .header("Content-Type", "application/json")
-                .body(AddBook(isbn, aisle))
+                .body(GenerateStringFromResource(
+                        System.getProperty("user.dir")
+                                + properties.getProperty("ADD_BOOK_JSON_PATH")))
                 .when()
-                .post("/Library/Addbook.php")
+                .post(properties.getProperty("ADD_BOOK_PATH"))
                 .then()
                 .assertThat()
                 .statusCode(200)
@@ -32,18 +37,8 @@ public class DynamicJson {
         System.out.println("ID: \n" + jsonPath.get("ID"));
     }
 
-    @DataProvider(name = "BooksData")
-    public Object[][] getData() {
-
-        return new Object[][] {
-            {
-                "iop", "9873"
-            },{
-                "frf", "8984"
-            },{
-                "iuyp", "9033"
-            }
-        };
+    @SuppressWarnings("Since15")
+    private static String GenerateStringFromResource(String path) throws IOException {
+        return new String(Files.readAllBytes(Paths.get(path)));
     }
-
 }

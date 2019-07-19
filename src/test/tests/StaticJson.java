@@ -9,12 +9,10 @@ import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class StaticJson extends TestBase{
+public class StaticJson extends TestBase {
 
     @Test
     public void addBook() throws IOException {
@@ -35,10 +33,5 @@ public class StaticJson extends TestBase{
 
         JsonPath jsonPath = ReusableMethods.rawToJSON(response);
         System.out.println("ID: \n" + jsonPath.get("ID"));
-    }
-
-    @SuppressWarnings("Since15")
-    private static String GenerateStringFromResource(String path) throws IOException {
-        return new String(Files.readAllBytes(Paths.get(path)));
     }
 }

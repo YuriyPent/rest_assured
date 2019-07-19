@@ -1,10 +1,15 @@
 package data;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Properties;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class TestBase {
     protected Properties properties = new Properties();
@@ -15,5 +20,23 @@ public class TestBase {
         FileInputStream fileInputStream = new FileInputStream(
                 System.getProperty("user.dir") + "/src/test/resources/env.properties");
         properties.load(fileInputStream);
+    }
+
+    @DataProvider(name = "BooksData")
+    public Object[][] getDataP() {
+
+        return new Object[][]{
+                {RandomStringUtils.randomAlphabetic(3),
+                        ThreadLocalRandom.current().nextInt(1, 9999) + ""},
+                {RandomStringUtils.randomAlphabetic(3),
+                        ThreadLocalRandom.current().nextInt(1, 9999) + ""},
+                {RandomStringUtils.randomAlphabetic(3),
+                        ThreadLocalRandom.current().nextInt(1, 9999) + ""}
+        };
+    }
+
+    @SuppressWarnings("Since15")
+    protected static String GenerateStringFromResource(String path) throws IOException {
+        return new String(Files.readAllBytes(Paths.get(path)));
     }
 }

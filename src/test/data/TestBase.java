@@ -11,14 +11,16 @@ import java.nio.file.Paths;
 import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static java.lang.System.getProperty;
+
 public class TestBase {
-    protected Properties properties = new Properties();
+    protected static Properties properties = new Properties();
 
     @BeforeTest
     public void getData() throws IOException {
 
         FileInputStream fileInputStream = new FileInputStream(
-                System.getProperty("user.dir") + "/src/test/resources/env.properties");
+                getProperty("user.dir") + "/src/test/resources/env.properties");
         properties.load(fileInputStream);
     }
 

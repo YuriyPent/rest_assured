@@ -1,0 +1,9 @@
+{
+  "jql": "project = RES",
+  "startAt": 0,
+  "maxResults": 1,
+  "fields": [
+    "id",
+    "key"
+  ]
+}

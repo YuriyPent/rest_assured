@@ -18,7 +18,6 @@ public class TestBase {
 
     @BeforeTest
     public void getData() throws IOException {
-
         FileInputStream fileInputStream = new FileInputStream(
                 getProperty("user.dir") + "/src/test/resources/env.properties");
         properties.load(fileInputStream);

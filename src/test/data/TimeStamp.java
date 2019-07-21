@@ -3,9 +3,9 @@ package data;
 import java.sql.Timestamp;
 import java.util.Date;
 
-class TimeStamp {
+public class TimeStamp {
 
-    static Timestamp  getTimeStamp() {
+    public static Timestamp  getTimeStamp() {
         Date date = new Date();
         long time = date.getTime();
         Timestamp ts = new Timestamp(time);

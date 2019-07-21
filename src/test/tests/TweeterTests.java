@@ -1,6 +1,5 @@
 package tests;
 
-import data.ReusableMethods;
 import data.TestBase;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -18,7 +17,7 @@ public class TweeterTests extends TestBase {
     public void getLatestTweet() {
 
         baseURI = properties.getProperty("TWEETER_URL");
-        Response response = given()
+        Response res = given()
                 .auth()
                 .oauth(
                         properties.getProperty("CONSUMER_KEY"),
@@ -32,9 +31,12 @@ public class TweeterTests extends TestBase {
                 .extract()
                 .response();
 
-        JsonPath jsonPath = ReusableMethods.rawToJSON(response);
-        System.out.println(jsonPath.get("text"));
-        System.out.println(jsonPath.get("id"));
+        String response = res.asString();
+        System.out.println(response);
+        JsonPath js = new JsonPath(response);
+
+        System.out.println(js.get("text"));
+        System.out.println(js.get("id"));
     }
 
     @Test
@@ -66,6 +68,7 @@ public class TweeterTests extends TestBase {
     @Test
     public void deleteTweet() {
 
+        createTweet();
         baseURI = properties.getProperty("TWEETER_URL");
         Response res = given().
                 auth().
@@ -75,7 +78,7 @@ public class TweeterTests extends TestBase {
                         properties.getProperty("TOKEN"),
                         properties.getProperty("TOKEN_SECRET"))
                 .when()
-                .post("/destroy" + id + ".json")
+                .post("/destroy/" + id + ".json")
                 .then()
                 .extract()
                 .response();
@@ -83,6 +86,9 @@ public class TweeterTests extends TestBase {
         String response = res.asString();
         System.out.println(response);
         JsonPath js = new JsonPath(response);
-        System.out.println("Below is the tweet deleted");
+        //System.out.println(js.get("text"));
+        System.out.println("Tweet which got deleted with automation is below");
+        System.out.println(js.get("text"));
+        System.out.println(js.get("truncated"));
     }
 }

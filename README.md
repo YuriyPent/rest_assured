@@ -14,11 +14,17 @@ of HTTP Builder. It supports `POST`, `GET`, `PUT`, `DELETE`, `OPTIONS`, `PATCH` 
 requests and can be used to validate and verify the response of these requests. 
 ## Creating a Project
 You will need somewhere for your project to reside, create a directory somewhere and start a shell in that directory. 
-On your command line, execute the following Maven goal:
 
-`mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false`
+<i><b> On your command line, execute the following Maven goal:</b></i>
 
-Under this directory you will notice the following standard project structure.
+    mvn archetype:generate \
+        -DgroupId=com.restassured.app \
+        -DartifactId=my-app \
+        -DarchetypeArtifactId=maven-archetype-quickstart \
+        -DarchetypeVersion=1.4 \
+        -DinteractiveMode=false
+
+<i><b> Under this directory you will notice the following standard project structure.</b></i>
 
     my-app
     |-- pom.xml
@@ -36,14 +42,16 @@ Under this directory you will notice the following standard project structure.
                         `-- app
                             `-- AppTest.java
                             
-The src/main/java directory contains the project source code, the src/test/java directory contains the test source, and the pom.xml file is the project's Project Object Model, or POM.
-The POM
+The src/main/java directory contains the project source code, the src/test/java directory contains the test source, 
+and the pom.xml file is the project's Project Object Model, or POM.
 
-The pom.xml file is the core of a project's configuration in Maven. 
+### The POM
+
+The `pom.xml` file is the core of a project's configuration in Maven. 
 It is a single configuration file that contains the majority of information required to build a project in just the way you want. 
-The POM is huge and can be daunting in its complexity, but it is not necessary to understand all of the intricacies just yet to use it effectively. 
+The <b>POM</b> is huge and can be daunting in its complexity, but it is not necessary to understand all of the intricacies just yet to use it effectively. 
 
-This project's POM is:
+<b><i>This project's POM is:</b></i>
 ```xml
     <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">

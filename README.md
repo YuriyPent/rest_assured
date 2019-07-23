@@ -91,3 +91,4 @@ You can use patterns too
 Since of Surefire Plugin 2.19 you can select multiple methods (JUnit 4, JUnit 4.7+ and TestNG):
 
     mvn -Dtest=TestCircle#testOne+testTwo test
+Run profile `mvn test -P<id_rpofile>`, example: `mvn test -PRegression`

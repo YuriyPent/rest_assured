@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="REST Assured java">
+        <classes>
+            <class name="tests.AppiumTest">
+                <methods>
+                    <include name="nativeAppAndroid"/>
+                    <include name="IosApps"/>
+                </methods>
+            </class>
+            <class name="tests.RestApiTest">
+                <methods>
+                    <include name="postJira"/>
+                    <include name="deleteTweeter"/>
+                </methods>
+            </class>
+            <class name="tests.SeleniumTest">
+                <methods>
+                    <include name="browserAutomation"/>
+                    <include name="elementsUi"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

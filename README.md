@@ -18,7 +18,7 @@ You will need somewhere for your project to reside, create a directory somewhere
 <i><b> On your command line, execute the following Maven goal:</b></i>
 
     mvn archetype:generate \
-        -DgroupId=com.restassured.app \
+        -DgroupId=com.mycompany.app \
         -DartifactId=my-app \
         -DarchetypeArtifactId=maven-archetype-quickstart \
         -DarchetypeVersion=1.4 \

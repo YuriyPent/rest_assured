@@ -1,4 +1,4 @@
-package java.com.restassured.app.tests;
+package tests;
 
 import org.testng.annotations.Test;
 

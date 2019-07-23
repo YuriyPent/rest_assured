@@ -73,3 +73,21 @@ The <b>POM</b> is huge and can be daunting in its complexity, but it is not nece
       </dependencies>
     </project>
 ```
+### Running a Single Test
+
+During development, you may run a single test class repeatedly. To run this through Maven, set the test property to a specific test case.
+    
+    mvn -Dtest=TestCircle test
+### Running a Set of Methods in a Single Test Class
+
+Run only a subset of the tests in a test class.
+
+    mvn -Dtest=TestCircle#mytest test
+
+You can use patterns too
+
+    mvn -Dtest=TestCircle#test* test
+
+Since of Surefire Plugin 2.19 you can select multiple methods (JUnit 4, JUnit 4.7+ and TestNG):
+
+    mvn -Dtest=TestCircle#testOne+testTwo test

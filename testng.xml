@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="REST Assured java tests">
+        <classes>
+            <class name="tests.DynamicJson">
+                <methods>
+                    <include name="addBook"/>
+                </methods>
+            </class>
+            <class name="tests.ExtractValues">
+                <methods>
+                    <include name="TestAssured"/>
+                </methods>
+            </class>
+            <class name="tests.GetMethod">
+                <methods>
+                    <include name="TestAssured"/>
+                </methods>
+            </class>
+            <class name="tests.JiraCreateComment">
+                <methods>
+                    <include name="jiraCreateCommentTest"/>
+                </methods>
+            </class>
+            <class name="tests.JiraCreateIssue">
+                <methods>
+                    <include name="jiraCreateIssueTest"/>
+                </methods>
+            </class>
+            <class name="tests.PostAndDeleteMethod">
+                <methods>
+                    <include name="AddAndDeletePlace"/>
+                </methods>
+            </class>
+            <class name="tests.PostMethod">
+                <methods>
+                    <include name="postData"/>
+                </methods>
+            </class>
+            <class name="tests.PostMethodXML">
+                <methods>
+                    <include name="postData"/>
+                </methods>
+            </class>
+            <class name="tests.StaticJson">
+                <methods>
+                    <include name="addBook"/>
+                </methods>
+            </class>
+            <class name="tests.TweeterTests">
+                <methods>
+                    <include name="getLatestTweet"/>
+                    <include name="createTweet"/>
+                    <include name="deleteTweet"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

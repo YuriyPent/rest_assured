@@ -5,15 +5,15 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import static data.ReusableMethods.jiraUpdateComment;
+import static data.ReusableMethods.jiraCreateComment;
 
 public class JiraCreateComment extends TestBase {
 
     @Test
     public void jiraCreateCommentTest() throws IOException {
-//        jiraCreateComment();
+        jiraCreateComment();
 //        jiraSearchCommentId();
-        jiraUpdateComment();
+//        jiraUpdateComment();
 
     }
 }

@@ -15,6 +15,7 @@ public class DynamicJson extends TestBase{
 
     @Test(dataProvider = "BooksData")
     public void addBook(String isbn, String aisle){
+        logger.debug("Start test");
 
         RestAssured.baseURI = properties.getProperty("HOST");
         Response response = given()

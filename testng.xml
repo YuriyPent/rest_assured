@@ -19,16 +19,16 @@
                     <include name="TestAssured"/>
                 </methods>
             </class>
-            <class name="tests.JiraCreateComment">
-                <methods>
-                    <include name="jiraCreateCommentTest"/>
-                </methods>
-            </class>
-            <class name="tests.JiraCreateIssue">
-                <methods>
-                    <include name="jiraCreateIssueTest"/>
-                </methods>
-            </class>
+            <!--<class name="tests.JiraCreateComment">-->
+                <!--<methods>-->
+                    <!--<include name="jiraCreateCommentTest"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+            <!--<class name="tests.JiraCreateIssue">-->
+                <!--<methods>-->
+                    <!--<include name="jiraCreateIssueTest"/>-->
+                <!--</methods>-->
+            <!--</class>-->
             <class name="tests.PostAndDeleteMethod">
                 <methods>
                     <include name="AddAndDeletePlace"/>
@@ -44,11 +44,11 @@
                     <include name="postData"/>
                 </methods>
             </class>
-            <class name="tests.StaticJson">
-                <methods>
-                    <include name="addBook"/>
-                </methods>
-            </class>
+            <!--<class name="tests.StaticJson">-->
+                <!--<methods>-->
+                    <!--<include name="addBook"/>-->
+                <!--</methods>-->
+            <!--</class>-->
             <class name="tests.TweeterTests">
                 <methods>
                     <include name="getLatestTweet"/>

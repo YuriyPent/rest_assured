@@ -1,6 +1,7 @@
 package tests;
 
 import data.ReusableMethods;
+import data.TestBase;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
@@ -9,10 +10,11 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class ExtractValues {
+public class ExtractValues extends TestBase{
 
     @Test
     public void TestAssured() {
+        logger.debug("Start test");
         RestAssured.baseURI = "https://maps.googleapis.com";
         Response response = given()
                 .param("location", "-33.8670522,151.1957362")

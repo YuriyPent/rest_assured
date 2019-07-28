@@ -17,6 +17,8 @@ public class TweeterTests extends TestBase {
     public void getLatestTweet() {
 
         baseURI = properties.getProperty("TWEETER_URL");
+        logger.info("Start test");
+        logger.info("Host information" + baseURI);
         Response res = given()
                 .auth()
                 .oauth(

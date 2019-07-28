@@ -14,7 +14,7 @@ public class ExtractValues extends TestBase{
 
     @Test
     public void TestAssured() {
-        logger.debug("Start test");
+        logger.debug("Start test TestAssured");
         RestAssured.baseURI = "https://maps.googleapis.com";
         Response response = given()
                 .param("location", "-33.8670522,151.1957362")
@@ -40,8 +40,8 @@ public class ExtractValues extends TestBase{
         int count = jsonPath.get("results.size()");
 
         for (int i = 0; i < count; i++) {
-            System.out.println(jsonPath.get("results[" + i + "].name"));
+            logger.info(jsonPath.get("results[" + i + "].name"));
         }
-        System.out.println(count);
+        logger.info(count);
     }
 }

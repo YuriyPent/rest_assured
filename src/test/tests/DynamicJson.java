@@ -15,7 +15,7 @@ public class DynamicJson extends TestBase{
 
     @Test(dataProvider = "BooksData")
     public void addBook(String isbn, String aisle){
-        logger.debug("Start test");
+        logger.debug("Start test addBook");
 
         RestAssured.baseURI = properties.getProperty("HOST");
         Response response = given()
@@ -30,6 +30,6 @@ public class DynamicJson extends TestBase{
                 .contentType(ContentType.JSON).extract().response();
 
         JsonPath jsonPath = ReusableMethods.rawToJSON(response);
-        System.out.println("ID: \n" + jsonPath.get("ID"));
+        logger.info("ID: \n" + jsonPath.get("ID"));
     }
 }

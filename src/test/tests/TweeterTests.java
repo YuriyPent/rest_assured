@@ -34,11 +34,11 @@ public class TweeterTests extends TestBase {
                 .response();
 
         String response = res.asString();
-        System.out.println(response);
+        logger.info(response);
         JsonPath js = new JsonPath(response);
 
-        System.out.println(js.get("text"));
-        System.out.println(js.get("id"));
+        logger.info(js.get("text"));
+        logger.info(js.get("id"));
     }
 
     @Test
@@ -60,10 +60,10 @@ public class TweeterTests extends TestBase {
                 .response();
 
         String response = res.asString();
-        System.out.println(response);
+        logger.info(response);
         JsonPath js = new JsonPath(response);
-        System.out.println("Below is the tweet added");
-        System.out.println(js.get("id"));
+        logger.info("Below is the tweet added");
+        logger.info(js.get("id"));
         id = js.get("id").toString();
     }
 
@@ -86,11 +86,11 @@ public class TweeterTests extends TestBase {
                 .response();
 
         String response = res.asString();
-        System.out.println(response);
+        logger.info(response);
         JsonPath js = new JsonPath(response);
         //System.out.println(js.get("text"));
-        System.out.println("Tweet which got deleted with automation is below");
-        System.out.println(js.get("text"));
-        System.out.println(js.get("truncated"));
+        logger.info("Tweet which got deleted with automation is below");
+        logger.info(js.get("text"));
+        logger.info(js.get("truncated"));
     }
 }

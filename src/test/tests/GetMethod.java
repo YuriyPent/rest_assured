@@ -11,7 +11,7 @@ public class GetMethod extends TestBase{
 
     @Test
     public void TestAssured() {
-        logger.debug("Start test");
+        logger.debug("Start test TestAssured");
         RestAssured.baseURI = "https://maps.googleapis.com";
         given()
                 .param("location", "-33.8670522,151.1957362")

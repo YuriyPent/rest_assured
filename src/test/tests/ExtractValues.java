@@ -8,6 +8,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
+import static data.Path.placePostTestAssured;
 import static io.restassured.RestAssured.given;
 
 public class ExtractValues extends TestBase{
@@ -15,7 +16,7 @@ public class ExtractValues extends TestBase{
     @Test
     public void TestAssured() {
         logger.debug("Start test TestAssured");
-        RestAssured.baseURI = "https://maps.googleapis.com";
+        RestAssured.baseURI = properties.getProperty("GOOGLE_API_URL");
         Response response = given()
                 .param("location", "-33.8670522,151.1957362")
                 .param("radius", "500")
@@ -26,7 +27,7 @@ public class ExtractValues extends TestBase{
 //                .cookie("", "")
 //                .body("")
                 .when()
-                .get("/maps/api/place/nearbysearch/json")
+                .get(placePostTestAssured())
                 .then()
                 .assertThat()
                 .statusCode(200)

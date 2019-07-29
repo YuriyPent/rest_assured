@@ -17,8 +17,6 @@ import static java.lang.System.getProperty;
 
 public class TestBase {
 
-
-
     protected static Logger logger = LogManager.getLogger(TestBase.class.getName());
 
     protected static Properties properties = new Properties();

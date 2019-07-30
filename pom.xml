@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>apitest</groupId>
     <artifactId>RestAssured</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <build>
         <resources>
@@ -27,6 +28,9 @@
             </plugins>
         </pluginManagement>
     </build>
+    <modules>
+        <module>ExcelDriven</module>
+    </modules>
     <dependencies>
         <dependency>
             <groupId>com.aventstack</groupId>

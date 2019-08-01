@@ -9,9 +9,7 @@ import java.util.Iterator;
 
 public class dataDriven {
 
-//    once coloumn is identifired then scan entire testcase coloumn to identify purchase testcase raw
-//    after grab purchase testcase row=pull all the data of that row and feed into test
-
+    //    after grab purchase testcase row=pull all the data of that row and feed into test
     public static void main(String[] args) throws IOException {
 
 //        File input stream argument
@@ -29,13 +27,19 @@ public class dataDriven {
                 Iterator<Row> rows = xssfSheet.iterator(); //sheet is collection of rows
                 Row firstrow = rows.next();
                 Iterator<Cell> cell = firstrow.cellIterator(); //row is collections of cells
+                int k = 0;
+                int coloumn = 0;
 
                 while (cell.hasNext()) {
                     Cell value = cell.next();
                     if (value.getStringCellValue().equalsIgnoreCase("TestCases")) {
 //                        desired coloumn
+                        coloumn = k;
                     }
+                    k++;
                 }
+                System.out.println(coloumn);
+                //    once coloumn is identifired then scan entire testcase coloumn to identify purchase testcase raw
             }
         }
     }

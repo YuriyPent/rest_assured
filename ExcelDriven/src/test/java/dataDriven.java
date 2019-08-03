@@ -5,13 +5,13 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class dataDriven {
 
-    public static void main(String[] args) throws IOException {
-
-//  File input stream argument
+    public ArrayList<String> getData(String testcaseName) throws IOException {
+        ArrayList<String> arrayList = new ArrayList<String>();
         FileInputStream fileInputStream = new FileInputStream("ExcelDriven/src/main/resources/datademo.xlsx");
         XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
 
@@ -41,15 +41,26 @@ public class dataDriven {
                 //    once coloumn is identifired then scan entire testcase coloumn to identify purchase testcase raw
                 while (rows.hasNext()) {
                     Row r = rows.next();
-                    if (r.getCell(coloumn).getStringCellValue().equalsIgnoreCase("Purchase")) {
+                    if (r.getCell(coloumn).getStringCellValue().equalsIgnoreCase(testcaseName)) {
 //  after grab purchase testcase row=pull all the data of that row and feed into test
                         Iterator<Cell> cv = r.cellIterator();
                         while (cv.hasNext()) {
-                            System.out.println(cv.next().getStringCellValue());
+                            arrayList.add(cv.next().getStringCellValue());
                         }
                     }
                 }
             }
         }
+        return arrayList;
+    }
+
+    public static void main(String[] args) throws IOException {
+
+        dataDriven dataDriven = new dataDriven();
+        ArrayList data = dataDriven.getData("Add Profile");
+        System.out.println(data.get(0));
+        System.out.println(data.get(1));
+        System.out.println(data.get(2));
+        System.out.println(data.get(3));
     }
 }
